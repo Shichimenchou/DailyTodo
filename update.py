@@ -46,6 +46,7 @@ else:
             for i in todo:
                 g.write(i)
             g.close()
+            print('\"' + temp[1].strip() + '\" completed. Current points: ' + str(val))
         else:
             print("Already completed today.")
             f.close()
