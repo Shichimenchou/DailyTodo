@@ -47,6 +47,7 @@ for i in currentContents:
     f.write(i)
 f.write(str(timeCode) + '\t' + arg.ljust(25) + '\t' + str(pointValue) + '\n')
 f.close()
+doSort('Categories/' + category + '.txt')
 
 today = datetime.date.today()
 day = ''
@@ -82,5 +83,4 @@ if category in toSearch:
     t.write(str(timeCode) + '\t' + arg.ljust(25) + '\t' + str(pointValue) + '\t' + '0' + '\n')
     t.close()
     doSort('History/' + d)
-    doSort('Categories/' + category + '.txt')
 
