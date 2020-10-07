@@ -13,7 +13,17 @@ arg = arg.rstrip()
 flag = False
 while not flag:
     category = input('Enter Category: ')
-    if not os.path.isfile('Categories/' + category + '.txt'):
+    if category.lower() == 'reward' or category.lower() == 'rewards':
+        pointValue = int(input('Enter point value: '))
+        f = open('Rewards/shop.txt', 'r')
+        currentRewards = f.readlines()
+        f.close()
+        f = open('Rewards/shop.txt', 'w')
+        for i in currentRewards:
+            f.write(i)
+        f.write(str(pointValue) + '\t\t' + arg.strip() + '\n')
+        quit()
+    if not os.path.isfile('Categories/' + category.lower() + '.txt'):
         print('Category does not exist. Try again.')
     else:
         flag = True
@@ -26,12 +36,12 @@ while not flag:
     else:
         print('Please enter a number between 0 and 5 for the time code.')
 
-pointValue =int(input('Enter point value: '))
+pointValue = int(input('Enter point value: '))
     
-f = open('Categories/' + category + '.txt', 'r')
+f = open('Categories/' + category.lower() + '.txt', 'r')
 currentContents = f.readlines()
 f.close()
-f = open('Categories/' + category + '.txt', 'w')
+f = open('Categories/' + category.lower() + '.txt', 'w')
 for i in currentContents:
     f.write(i)
 f.write(str(timeCode) + '\t' + arg.ljust(25) + '\t' + str(pointValue) + '\n')
