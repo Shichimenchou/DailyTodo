@@ -1,6 +1,7 @@
 import sys
 import os
-
+import datetime
+from sortFile import doSort
 
 os.chdir(os.path.expanduser('~')+ '/Projects/Dailies/')
 
@@ -46,3 +47,40 @@ for i in currentContents:
     f.write(i)
 f.write(str(timeCode) + '\t' + arg.ljust(25) + '\t' + str(pointValue) + '\n')
 f.close()
+
+today = datetime.date.today()
+day = ''
+if today.weekday() == 6:
+    day = 'sunday'
+if today.weekday() == 0:
+    day = 'monday'
+if today.weekday() == 1:
+    day = 'tuesday'
+if today.weekday() == 2:
+    day = 'wednesday'
+if today.weekday() == 3:
+    day = 'thursday'
+if today.weekday() == 4:
+    day = 'friday'
+if today.weekday() == 5:
+    day = 'saturday'
+
+g = open('Days/' + day + '.txt', 'r')
+todaysCategories = g.readlines()
+g.close()
+toSearch = []
+for i in todaysCategories:
+    toSearch.append(i.strip())
+if category in toSearch:
+    d = today.strftime('%b-%d-%Y')
+    t = open('History/' + d, 'r')
+    todayCurrent = t.readlines()
+    t.close()
+    t = open('History/' + d, 'w')
+    for i in todayCurrent:
+        t.write(i)
+    t.write(str(timeCode) + '\t' + arg.ljust(25) + '\t' + str(pointValue) + '\t' + '0' + '\n')
+    t.close()
+    doSort('History/' + d)
+    doSort('Categories/' + category + '.txt')
+
