@@ -19,7 +19,8 @@ arg = arg.rstrip()
 
 if arg == '':
     for i in todo:
-        print(i.rstrip())
+        if int(i.rstrip()[-1]) == 0:
+            print(i.rstrip())
     f.close()
 else:
     for t in range(0, len(todo)):
