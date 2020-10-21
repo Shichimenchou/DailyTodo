@@ -52,6 +52,6 @@ if not os.path.isfile('History/' + d):
 
     dailies.close()
 
-    now = datetime.datetime.now()
-    if int(now.hour) < 7:
-        import update
+    #now = datetime.datetime.now()
+    #if int(now.hour) < 7:
+    #    import update
