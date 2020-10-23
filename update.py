@@ -22,6 +22,9 @@ if arg == '':
         if int(i.rstrip()[-1]) == 0:
             print(i.rstrip())
     f.close()
+elif arg == 'all':
+    for i in todo:
+        print(i.rstrip())
 else:
     for t in range(0, len(todo)):
         if todo[t].lower().find(arg) >= 0:
